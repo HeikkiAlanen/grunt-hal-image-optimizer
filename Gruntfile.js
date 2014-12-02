@@ -13,38 +13,45 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     jshint: {
-      all: [
-        'Gruntfile.js',
-        'tasks/*.js',
-        '<%= nodeunit.tests %>'
-      ],
-      options: {
-        jshintrc: '.jshintrc'
-      }
+        all: [
+            'Gruntfile.js',
+            'tasks/*.js',
+            '<%= nodeunit.tests %>'
+        ],
+        options: {
+            jshintrc: '.jshintrc'
+        }
     },
-
+    
     // Before generating any new files, remove any previously-created files.
     clean: {
-      tests: ['tmp']
+      tests: ['./imgTest']
+    },
+
+    copy: {
+      files: {
+        expand: true,
+        src: ['./node_modules/hal-image-optimizer/test/test_images/*'],
+        dest: './imgTest',
+        flatten: true,
+        filter: 'isFile'
+      }
     },
 
     // Configuration to be run (and then tested).
     hal_image_optimizer: {
-      default_options: {
+      tests1: {
         options: {
+            source: './imgTest'
         },
-        files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123']
-        }
+        src: ['./imgTest']
       },
-      custom_options: {
+      tests2: {
         options: {
-          separator: ': ',
-          punctuation: ' !!!'
+            source: './imgTest',
+            target: './imgThumbs'
         },
-        files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123']
-        }
+        src: ['./imgTest']
       }
     },
 
@@ -61,13 +68,16 @@ module.exports = function(grunt) {
   // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'hal_image_optimizer', 'nodeunit']);
+  //grunt.registerTask('test', ['clean', 'hal_image_optimizer', 'nodeunit']);
+  grunt.registerTask('test', ['clean', 'copy', 'hal_image_optimizer']);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);
+  //grunt.registerTask('default', ['test']);
 
 };
