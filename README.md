@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/HeikkiAlanen/grunt-hal-image-optimizer.svg)](https://travis-ci.org/HeikkiAlanen/grunt-hal-image-optimizer)
+
 # grunt-hal-image-optimizer
 
 > Simple plugin to optimize images for web usage.
