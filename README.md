@@ -63,8 +63,8 @@ Heigth of the generated image.
 
 
 ## Release History
-_(Nothing yet)_
-
+###v1.0.0:
+* First version.
 
 ## License
 
