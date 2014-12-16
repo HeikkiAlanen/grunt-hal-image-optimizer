@@ -18,19 +18,31 @@ module.exports = function(grunt) {
   grunt.registerMultiTask('hal_image_optimizer', 'Simple application to optimize images for web usage.', function() {
   
     var done = this.async();
-  
+
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
     });
-    
-    var value = imgOpt(options).then(
-      function(image) {
-        done();
-      },
-      function(err) {
-        console.log(err);
-        done();
-      }
-    );
+        
+    this.files.forEach(function filesEach(file) {
+
+        if (typeof file.dest === 'string') {
+            options.target = file.dest;
+        }
+
+        file.src.forEach(function srcEach(src) {
+
+            options.source = src;
+
+            var value = imgOpt(options).then(
+              function(image) {
+                done();
+              },
+              function(err) {
+                console.log(err);
+                done();
+              }
+            );
+        });
+    });
   });
 };

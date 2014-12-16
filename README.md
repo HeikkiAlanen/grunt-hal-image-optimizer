@@ -24,30 +24,19 @@ Following example optimizes images from the test folder and places thumbnail ima
 
 ```js
 grunt.initConfig({
-  hal_image_optimizer: {
-    options: {
-        source: './node_modules/hal-image-optimizer/test/test_images',
-        target: './imgThumbs'
-        width: 200,
-        height: 200
+    hal_image_optimizer: {
+      example: {
+        options: {
+            width: 200,
+            height: 200
+        },
+        files: {'./imgThumbs': './node_modules/hal-image-optimizer/test/test_images' }
+      }
     }
-  }
 });
 ```
 
 ### Options
-
-#### options.source
-Type: `String`
-Default value: `'./'`
-
-Path to source images.
-
-#### options.target
-Type: `String`
-Default value: `'./'`
-
-Path to generated thumbnail images.
 
 #### options.width
 Type: `Integer`
@@ -61,6 +50,8 @@ Default value: `100`
 
 Heigth of the generated image.
 
+#### files
+The path to the destination (key), the path to the source files. 
 
 ## Release History
 ###v1.0.0:
