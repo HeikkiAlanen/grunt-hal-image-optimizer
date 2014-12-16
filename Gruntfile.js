@@ -32,12 +32,10 @@ module.exports = function(grunt) {
     hal_image_optimizer: {
       example: {
         options: {
-            source: './node_modules/hal-image-optimizer/test/test_images',
-            target: './imgThumbs',
             width: 200,
             height: 200
         },
-        src: ['./node_modules/hal-image-optimizer/test/test_images']
+        files: {'./imgThumbs': './node_modules/hal-image-optimizer/test/test_images' }
       }
     },
 
