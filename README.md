@@ -54,6 +54,9 @@ Heigth of the generated image.
 The path to the destination (key), the path to the source files. 
 
 ## Release History
+###v1.0.1:
+* Corrected usage of source and destination.
+
 ###v1.0.0:
 * First version.
 

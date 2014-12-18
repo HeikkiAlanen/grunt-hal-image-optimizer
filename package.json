@@ -1,7 +1,7 @@
 {
   "name": "grunt-hal-image-optimizer",
   "description": "Simple plugin to be run via Grunt to optimize images for web usage.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/HeikkiAlanen/grunt-hal-image-optimizer",
   "author": {
     "name": "Heikki Alanen",
